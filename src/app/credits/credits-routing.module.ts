@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CreditsComponent} from "./containers/credits/credits.component";
 import {UserResolver} from "./resolvers/user.resolver";
-import {AuthenticatedGuard} from "../shared/guards/authenticated.guard";
 
 const routes: Routes = [
   {
@@ -10,7 +9,6 @@ const routes: Routes = [
     resolve: {
       user: UserResolver
     },
-    canActivate: [AuthenticatedGuard],
     component: CreditsComponent
   }
 ];
