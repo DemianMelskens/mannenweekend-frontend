@@ -17,12 +17,12 @@ export class AccountService {
   ) {
   }
 
-  public register(username: string, password: string, firstName: string, lastName: string): Observable<string> {
-    return this.accountClient.register({username, password, firstName, lastName});
+  public register(registration: { username: string, password: string, firstname: string, lastname: string }): Observable<string> {
+    return this.accountClient.register(registration);
   }
 
-  public authenticate({username, password}: { username: string, password: string }): Observable<string> {
-    return this.accountClient.authenticate({username, password, rememberMe: false})
+  public authenticate(login: { username: string, password: string }): Observable<string> {
+    return this.accountClient.authenticate({...login, rememberMe: false})
       .pipe(
         map(result => result.token),
         tap(token => this.tokenService.setToken(token))

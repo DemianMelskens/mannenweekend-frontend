@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  max-width: 80vw;
+  margin: 50px auto;
+}
+
+
+input {
+  width: 100%;
+  height: 28px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  transition: .5s border;
+  outline: none;
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
+}
