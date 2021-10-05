@@ -6,14 +6,16 @@ import {Store} from "@ngxs/store";
 import {User} from "../models/user.model";
 import {UpdateUser} from "../state/account.actions";
 import {TokenService} from "../../shared/services/token.service";
+import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class AccountService {
 
   constructor(
-    private accountClient: AccountClient,
-    private tokenService: TokenService,
     private store: Store,
+    private router: Router,
+    private tokenService: TokenService,
+    private accountClient: AccountClient,
   ) {
   }
 
@@ -31,6 +33,7 @@ export class AccountService {
 
   public logout(): void {
     this.tokenService.removeToken();
+    this.router.navigate(['/account', 'login']);
   }
 
   public getUser(): Observable<User> {

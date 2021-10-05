@@ -6,6 +6,7 @@ import {UserResolver} from "./resolvers/user.resolver";
 const routes: Routes = [
   {
     path: '',
+    runGuardsAndResolvers: 'always',
     resolve: {
       user: UserResolver
     },

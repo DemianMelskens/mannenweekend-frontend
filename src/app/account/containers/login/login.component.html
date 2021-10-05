@@ -1,6 +1,13 @@
 <form [formGroup]="loginForm" (ngSubmit)="submit()">
-  <input formControlName="username" placeholder="username..." type="text">
-  <input formControlName="password" placeholder="password..." type="password">
+  <label>
+    <fa-icon icon="user"></fa-icon>
+    <input formControlName="username" placeholder="username..." type="text">
+  </label>
+  <label>
+    <fa-icon icon="lock"></fa-icon>
+    <input formControlName="password" placeholder="password..." type="password">
+  </label>
   <button type="submit" [disabled]="loginForm.invalid">Login</button>
   <a routerLink="/account/register">Register</a>
+  <h2 *ngIf="failed">Login failed</h2>
 </form>

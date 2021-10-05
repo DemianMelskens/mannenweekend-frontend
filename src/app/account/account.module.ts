@@ -3,10 +3,8 @@ import {CommonModule} from '@angular/common';
 import {AccountRoutingModule} from "./account-routing.module";
 import {LoginComponent} from './containers/login/login.component';
 import {RegisterComponent} from './containers/register/register.component';
-import {HttpClientModule} from "@angular/common/http";
-import {AccountState} from "./state/account.state";
-import {NgxsModule} from "@ngxs/store";
 import {ReactiveFormsModule} from "@angular/forms";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -14,12 +12,12 @@ import {ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     RegisterComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgxsModule.forFeature([AccountState]),
-    AccountRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        AccountRoutingModule,
+        FontAwesomeModule
+    ]
 })
 export class AccountModule {
 }

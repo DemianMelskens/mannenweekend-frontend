@@ -3,8 +3,6 @@ import {Store} from "@ngxs/store";
 import {User} from "../../../account/models/user.model";
 import {Observable} from "rxjs";
 import {AccountState} from "../../../account/state/account.state";
-import {TokenService} from "../../../shared/services/token.service";
-import {Router} from "@angular/router";
 import {AccountService} from "../../../account/services/account.service";
 
 @Component({
@@ -18,7 +16,6 @@ export class CreditsComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private router: Router,
     private accountService: AccountService
   ) {
   }
@@ -29,6 +26,5 @@ export class CreditsComponent implements OnInit {
 
   logout(): void {
     this.accountService.logout();
-    this.router.navigate(['/account', 'login']);
   }
 }

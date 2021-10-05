@@ -5,5 +5,6 @@
   <input formControlName="lastname" placeholder="lastname..." type="text">
   <button type="submit" [disabled]="registerForm.invalid">Register</button>
   <a routerLink="/account/login">Already have an account?</a>
+  <h2 *ngIf="failed">Register failed</h2>
 </form>
 

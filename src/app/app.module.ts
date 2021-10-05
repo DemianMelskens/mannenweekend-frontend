@@ -8,6 +8,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {environment} from "../environments/environment";
+import {AccountState} from "./account/state/account.state";
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {icons} from "../assets/icons";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import {environment} from "../environments/environment";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxsModule.forRoot([], {developmentMode: !environment.production}),
+    FontAwesomeModule,
+    NgxsModule.forRoot([AccountState], {developmentMode: !environment.production}),
     NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [
@@ -26,4 +30,10 @@ import {environment} from "../environments/environment";
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  constructor(
+    iconLibrary: FaIconLibrary,
+  ) {
+    iconLibrary.addIcons(...icons);
+  }
 }
