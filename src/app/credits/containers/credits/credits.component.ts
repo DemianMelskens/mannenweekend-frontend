@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from "@ngxs/store";
+import {Component} from '@angular/core';
+import {Select, Store} from "@ngxs/store";
 import {User} from "../../../account/models/user.model";
 import {Observable} from "rxjs";
-import {AccountState} from "../../../account/state/account.state";
 import {AccountService} from "../../../account/services/account.service";
 
 @Component({
@@ -10,18 +9,15 @@ import {AccountService} from "../../../account/services/account.service";
   templateUrl: './credits.component.html',
   styleUrls: ['./credits.component.scss']
 })
-export class CreditsComponent implements OnInit {
+export class CreditsComponent {
 
+  @Select()
   user?: Observable<User | undefined>;
 
   constructor(
     private store: Store,
     private accountService: AccountService
   ) {
-  }
-
-  ngOnInit(): void {
-    this.user = this.store.select(AccountState.getUser);
   }
 
   logout(): void {
