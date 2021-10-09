@@ -5,16 +5,21 @@ import {Observable, of} from "rxjs";
   providedIn: 'root'
 })
 export class TokenService {
+  private readonly TOKEN_KEY = 'token';
+
+  public getTokenSnapshot(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
+  }
 
   public getToken(): Observable<string | null> {
-    return of(localStorage.getItem('token'));
+    return of(localStorage.getItem(this.TOKEN_KEY));
   }
 
   public setToken(token: string): void {
-    localStorage.setItem('token', token)
+    localStorage.setItem(this.TOKEN_KEY, token)
   }
 
   public removeToken(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem(this.TOKEN_KEY);
   }
 }
